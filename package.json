@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
       "start": "NODE_PATH=./config:./controllers:./models:./assets node server.js",
-      "devserve": "NODE_PATH=./config:./controllers:./models:./assets PORT=3030 supervisor -w . -e 'html|js' app server.js"
+      "devserve": "NODE_PATH=./config:./controllers:./models:./assets PORT=3030 ./node_modules/supervisor/lib/cli-wrapper.js  -e 'html|js' app server.js"
 
   },
   "repository": {
@@ -34,7 +34,6 @@
     "handlebars": "^4.0.5",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0",
-    "reload": "^1.0.1",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

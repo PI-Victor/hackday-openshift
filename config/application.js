@@ -12,13 +12,13 @@ module.exports  = function(app) {
     //other app settings and vars
     rootPath = path.dirname(path.resolve(__dirname)),
     viewsPath = path.join(rootPath, "/views"),
-    assetsPath = path.join(rootPath, "/assets"),
-    faviconPath = path.join(assetsPath, "/images/favicon.ico"),
+    publicPath = path.join(rootPath, "/public"),
+    faviconPath = path.join(publicPath, "/images/favicon.ico"),
     oneDay = 86400000;
 
     app.use(compress());
     app.use(favicon(faviconPath));
-    app.use("/static", express.static(assetsPath, {maxAge: oneDay}));
+    app.use("/static", express.static(publicPath, {maxAge: oneDay}));
     app.use(logger('dev'));
     app.engine("html", consolidate.handlebars);
     app.set("view engine", "html");
