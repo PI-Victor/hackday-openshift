@@ -4,7 +4,8 @@
   "description": "A nodejs sample application to deploy on OpenShift",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_PATH=./config:./controllers:./models:./assets node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,17 @@
   "bugs": {
     "url": "https://github.com/pi-victor/hackday-openshift/issues"
   },
-  "homepage": "https://github.com/pi-victor/hackday-openshift#readme"
+  "homepage": "https://github.com/pi-victor/hackday-openshift#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "compression": "^1.6.2",
+    "consolidate": "^0.14.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "handlebars": "^4.0.5",
+    "mongoose": "^4.5.8",
+    "morgan": "^1.7.0",
+    "reload": "^1.0.1",
+    "serve-favicon": "^2.3.0"
+  }
 }
