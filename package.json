@@ -1,15 +1,17 @@
 {
-  "name": "nodejs-app",
+  "name": "hospitality",
   "version": "1.0.0",
   "description": "A nodejs sample application to deploy on OpenShift",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_PATH=./config:./controllers:./models:./assets node server.js"
+      "start": "NODE_PATH=./config:./controllers:./models:./assets node server.js",
+      "devserve": "NODE_PATH=./config:./controllers:./models:./assets PORT=3030 supervisor -w . -e 'html|js' app server.js"
+
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pi-victor/hackday-openshift.git"
+    "url": "git+https://github.com/pi-victor/hospitality.git"
   },
   "keywords": [
     "openshift",
@@ -20,9 +22,9 @@
   "author": "Victor Palade ipalade@redhat.com",
   "license": "CC-BY-3.0",
   "bugs": {
-    "url": "https://github.com/pi-victor/hackday-openshift/issues"
+    "url": "https://github.com/pi-victor/hospitality/issues"
   },
-  "homepage": "https://github.com/pi-victor/hackday-openshift#readme",
+  "homepage": "https://github.com/pi-victor/hospitality#readme",
   "dependencies": {
     "colors": "^1.1.2",
     "compression": "^1.6.2",
@@ -34,5 +36,11 @@
     "morgan": "^1.7.0",
     "reload": "^1.0.1",
     "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.0.1",
+    "supervisor": "^0.11.0"
   }
 }
