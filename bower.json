@@ -1,0 +1,27 @@
+{
+  "name": "hospitality",
+  "description": "A nodejs sample application to deploy on OpenShift",
+  "main": "server.js",
+  "authors": [
+    "Victor Palade ipalade@redhat.com"
+  ],
+  "license": "CC-BY-3.0",
+  "keywords": [
+    "openshift",
+    "paas",
+    "nodejs",
+    "hackday"
+  ],
+  "homepage": "http://github.com/PI-Victor/hospitality",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

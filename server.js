@@ -2,6 +2,7 @@ var express = require('express'),
     app = module.exports = express();
 
 require('application')(app)
+require('routes')(app)
 
 server = app.listen(process.env.PORT || 3000, process.env.HOST || 'localhost' , function() {
     var host = server.address().address;
