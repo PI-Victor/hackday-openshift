@@ -18,7 +18,6 @@ module.exports  = function(app) {
 
     app.use(compress());
     app.use(favicon(faviconPath));
-    console.log(publicPath)
     app.use(express.static(publicPath, {maxAge: oneDay}));
     app.use(logger('dev'));
     app.engine("html", consolidate.handlebars);

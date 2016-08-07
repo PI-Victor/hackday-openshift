@@ -9,17 +9,58 @@
     <meta name="description" content="Hospitality">
     <meta name="author" content="Palade Ionut Victor">
     <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/custom.css">
     <!--[if lt IE 9]>
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   </head>
   <body>
-    <div class="">
-
+    <div class="container">
+      <div class="row">
+        <h1><a href="#"><img src="images/favicon.ico"</h1></a>
+        <h1>Hospitality</h1>
+        <hr>
+      </div>
+      <ul class="nav nav-pills nav-justified">
+          <li class="active"><a data-toggle="tab" href="#reception">Reception</a></li>
+        <li role="presentation">
+          <a data-toggle="tab" href="#patients">Patients</a>
+        </li>
+        <li role="presentation">
+          <a data-toggle="tab" href="#medication">Medication</a>
+        </li>
+        <li role="presentation">
+          <a data-toggle="tab" href="#dutyinfo">On Duty Info</a>
+        </li>
+        <li role="presentation">
+          <a data-toggle="tab" href="#emergency">Emergency</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="reception" class="tab-pane fade in active">
+          <h1>Reception</h1>
+          <p>
+            Welcome to Hospitality!
+          </p>
+        </div>
+        <div id="patients" class="tab-pane fade">
+          <h1>Patients</h1>
+            <div class="container">
+            {{#each patients}}
+            <span>{{this.Name}}</span>
+            {{/each}}
+            <div>
+        <div id="medication" class="tab-pane fade">
+          <h1>Medication</h1>
+        </div>
+        <div id="dutyinfo" class="tab-pane fade">
+          <h1>On duty info</h1>
+        </div>
+        <div id="emergency" class="tab-pane fade">
+          <h1>Emergency</h1>
+        </div>
+      </div>
     </div>
-    <h1>Hospitality</h1>
-    <hr>
-    <h4>patient care at its best</h4>
 <!---Script section -->
     <script type="text/javascript" src="static/jquery.min.js"></script>
     <script type="text/javascript" src="static/bootstrap.min.js"></script>
