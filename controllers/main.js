@@ -11,9 +11,6 @@ var patients = [
   }
 ]
 
-for(i=0; i < patients.length; i++) {
-  console.log(patients[i])
-}
 exports.index = function(req, res) {
   res.render('index', {
     title: "Hospitality",
