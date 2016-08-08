@@ -13,7 +13,7 @@ var patients = [
 
 exports.index = function(req, res) {
   res.render('index', {
-    title: "Hospitality",
+    title: 'Hospitality',
     patients: patients,
     cache: true,
   });

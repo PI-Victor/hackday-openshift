@@ -1,9 +1,21 @@
 var mongoose = require('mongoose');
+    patients = require('patients'),
+    emergency = require('emergency'),
+    onduty = require('onduty'),
+    medication = require('medication');
 
-mongoose.connect('mongodb://localhost/dbCollection', function(err, db) {
-    if (err) {
-        console.log('Unable to connect to the server. Please start the server. Error:'.red, err);
-    } else {
-        console.log('Connected to Server successfully!'.green);
-    }
+
+var db = mongoose.connection;
+host = process.env.MONGODB_HOST || 'localhost';
+port = process.env.MONGODB_PORT || 27017;
+uri = 'mongodb://' + host + ':' + port;
+
+db.on('error', function(err) {
+  console.log('Couldn\'t connect to database on: %s'.red, uri);
 });
+
+db.once('open', function(){
+  console.log('Successfully connect to %s'.green, uri);
+});
+
+mongoose.connect(uri);
