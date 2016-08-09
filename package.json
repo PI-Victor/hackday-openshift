@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node_modules/bower/bin/bower install",
     "start": "NODE_PATH=./config:./controllers:./models:./assets node server.js",
-    "devserve": "NODE_PATH=./config:./controllers:./models:./assets PORT=3030 ./node_modules/supervisor/lib/cli-wrapper.js  -e 'html|js' app server.js"
+    "devserve": "NODE_PATH=./config:./controllers:./models:./assets PORT=3030 ./node_modules/supervisor/lib/cli-wrapper.js  -e 'html|js' app server.js",
+    "populate": "NODE_PATH=./config:./controllers:./models:./assets node utils/populate.js"
   },
   "repository": {
     "type": "git",
@@ -26,15 +27,18 @@
   },
   "homepage": "https://github.com/pi-victor/hospitality#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "bower": "^1.7.9",
     "colors": "^1.1.2",
     "compression": "^1.6.2",
     "consolidate": "^0.14.1",
     "dotenv": "^2.0.0",
+    "dotenvjs": "^1.0.5",
     "express": "^4.14.0",
     "handlebars": "^4.0.5",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0",
+    "promise": "^7.1.1",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
