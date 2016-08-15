@@ -1,7 +1,8 @@
-var url = require('url'),
-  dateFormat = require('dateformat'),
+var dateFormat = require('dateformat'),
   mongoose = require('mongoose')
 
+// TODO: insert all the openshift origin variables that are needed to connect
+// to a mongodb instance
 var MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/Hospitality'
 
 module.exports = function () {
