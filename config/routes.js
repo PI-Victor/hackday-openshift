@@ -1,3 +1,4 @@
+'use strict'
 var main = require('main'),
   patients = require('patients'),
   emergency = require('emergency'),
