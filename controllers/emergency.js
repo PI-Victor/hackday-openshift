@@ -1,5 +1,5 @@
-exports.show = function(req, res) {
+exports.show = function (req, res) {
   res.render({
     title: 'Emergency'
-  });
+  })
 }

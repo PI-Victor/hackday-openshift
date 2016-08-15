@@ -1,26 +1,26 @@
 var patients = [
   {
-    Name: "John",
-    Age: "62",
-    Sex: "Male"
+    Name: 'John',
+    Age: '62',
+    Sex: 'Male'
   },
   {
-    Name: "Jenny",
-    Age: "28",
-    Sex: "Female"
+    Name: 'Jenny',
+    Age: '28',
+    Sex: 'Female'
   }
 ]
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   res.render('index', {
     title: 'Hospitality',
     patients: patients,
-    cache: true,
-  });
+    cache: true
+  })
 }
 
-exports.login = function(req, res) {
+exports.login = function (req, res) {
   res.render('login', {
-    title: 'Login',
-  });
+    title: 'Login'
+  })
 }
