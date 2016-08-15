@@ -1,21 +1,43 @@
-var mongoose = require('mongoose');
-    patients = require('patients'),
-    emergency = require('emergency'),
-    onduty = require('onduty'),
-    medication = require('medication');
+var url = require('url'),
+  dateFormat = require('dateformat'),
+  mongoose = require('mongoose')
 
+var MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/Hospitality'
 
-var db = mongoose.connection;
-host = process.env.MONGODB_HOST || 'localhost';
-port = process.env.MONGODB_PORT || 27017;
-uri = 'mongodb://' + host + ':' + port;
+module.exports = function () {
+  return {
+    mongoose: mongoose,
+    schema: mongoose.Schema,
 
-db.on('error', function(err) {
-  console.log('Couldn\'t connect to database on: %s'.red, uri);
-});
+    connect: function (callback) {
+      let now = new Date()
+      let date = dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+      mongoose.connect(MONGODB_URL)
 
-db.once('open', function(){
-  console.log('Successfully connect to %s'.green, uri);
-});
+      mongoose.connection.on('error', function (err) {
+        console.log('%s - Connection error: %s'.red, date, err)
+      })
 
-mongoose.connect(uri);
+      mongoose.connection.on('disconnected', function () {
+        console.log('%s - Disconnected from database!'.red, date)
+      })
+
+      mongoose.connection.on('connected', function () {
+        console.log('%s - Connection to database established'.blue, date)
+      })
+
+      process.on('SIGINT', function () {
+        mongoose.connection.close(function () {
+          console.log('%s - Main process killed - database connection closed!'.yellow)
+          process.exit(0)
+        })
+      })
+
+      mongoose.connection.once('open', callback)
+    },
+
+    model: function (name, schema) {
+      return mongoose.model(name, schema)
+    }
+  }
+}
