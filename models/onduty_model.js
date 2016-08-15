@@ -1,11 +1,11 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema
 
 var ondutySchema = new Schema({
   name: String,
   phone: String,
   pager: String,
   email: String
-});
+})
 
-module.exports = mongoose.model('ondutyModel', ondutySchema);
+module.exports = mongoose.model('ondutyModel', ondutySchema)
