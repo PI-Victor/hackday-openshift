@@ -12,5 +12,5 @@ module.exports = (db) => {
   exports.create = (req, res) => {
 
   }
-  return exports
+  return this
 }

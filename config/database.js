@@ -17,20 +17,20 @@ module.exports = () => {
       mongoose.connect(url)
 
       mongoose.connection.on('error', (err) => {
-        console.log('%s - Connection error: %s to: '.red, date, err, url)
+        console.log(`${date} - Connection error: ${err} to: ${url}`.red)
       })
 
       mongoose.connection.on('disconnected', () => {
-        console.log('%s - Disconnected from %s'.red, date, url)
+        console.log(`${date} - Disconnected from ${url}`.red)
       })
 
       mongoose.connection.on('connected', () => {
-        console.log('%s - Connection to database established on %s'.blue, date, url)
+        console.log(`${date} - Connection to database established on ${url}`.blue)
       })
 
       process.on('SIGINT', () => {
         mongoose.connection.close(() => {
-          console.log('%s - Main process killed - connection to %s closed!'.yellow, date, url)
+          console.log(`${date} - Main process killed - connection to ${url} closed!`.yellow)
           process.exit(0)
         })
       })
