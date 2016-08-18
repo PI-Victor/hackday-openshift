@@ -1,10 +1,9 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema
+'use strict'
 
-var medicationSchema = new Schema({
-  name: String,
-  type: String,
-  comments: [{body: String, date: Date}]
-})
-
-module.exports = mongoose.model('medicationModel', medicationSchema)
+module.exports = (db) => {
+  let MedicationSchema = new Schema({
+    name: String,
+    type: String,
+    comments: [{body: String, date: Date}]
+  })
+}

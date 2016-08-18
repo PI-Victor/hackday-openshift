@@ -1,10 +1,12 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema
+'use strict'
 
-var emergencySchema = new Schema({
-  room_no: String,
-  patient_no: String,
-  severity: Number
-})
+module.exports = (db) => {
+  let EmergencySchema = new db.schema({
+    created: {type: Date, 'default': Date.now},
+    room_no: String,
+    severity: Number
+  })
 
-module.exports = mongoose.model('EmergencyModel', emergencySchema)
+  db.model('Emergency', EmergencySchema)
+  console.log('Loaded Document Emergency'.blue)
+}

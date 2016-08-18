@@ -1,11 +1,10 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema
+'use strict'
 
-var ondutySchema = new Schema({
-  name: String,
-  phone: String,
-  pager: String,
-  email: String
-})
-
-module.exports = mongoose.model('ondutyModel', ondutySchema)
+module.exports = (db) => {
+  let ondutySchema = new Schema({
+    name: String,
+    phone: String,
+    pager: String,
+    email: String
+  })
+}

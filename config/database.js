@@ -1,35 +1,36 @@
-var dateFormat = require('dateformat'),
-  mongoose = require('mongoose')
+'use strict'
+
+var dateFormat = require('dateformat')
+var mongoose = require('mongoose')
 
 // TODO: insert all the openshift origin variables that are needed to connect
 // to a mongodb instance
-var MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost/Hospitality'
+var url = process.env.MONGODB_URL || 'mongodb://localhost/Hospitality'
 
-module.exports = function () {
+module.exports = () => {
   return {
     mongoose: mongoose,
     schema: mongoose.Schema,
 
-    connect: function (callback) {
-      let now = new Date()
-      let date = dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT')
-      mongoose.connect(MONGODB_URL)
+    connect: (callback) => {
+      let date = dateFormat(Date.now(), 'dddd, mmmm dS, yyyy, h:MM:ss TT')
+      mongoose.connect(url)
 
-      mongoose.connection.on('error', function (err) {
-        console.log('%s - Connection error: %s'.red, date, err)
+      mongoose.connection.on('error', (err) => {
+        console.log('%s - Connection error: %s to: '.red, date, err, url)
       })
 
-      mongoose.connection.on('disconnected', function () {
-        console.log('%s - Disconnected from database!'.red, date)
+      mongoose.connection.on('disconnected', () => {
+        console.log('%s - Disconnected from %s'.red, date, url)
       })
 
-      mongoose.connection.on('connected', function () {
-        console.log('%s - Connection to database established'.blue, date)
+      mongoose.connection.on('connected', () => {
+        console.log('%s - Connection to database established on %s'.blue, date, url)
       })
 
-      process.on('SIGINT', function () {
-        mongoose.connection.close(function () {
-          console.log('%s - Main process killed - database connection closed!'.yellow)
+      process.on('SIGINT', () => {
+        mongoose.connection.close(() => {
+          console.log('%s - Main process killed - connection to %s closed!'.yellow, date, url)
           process.exit(0)
         })
       })
@@ -37,7 +38,7 @@ module.exports = function () {
       mongoose.connection.once('open', callback)
     },
 
-    model: function (name, schema) {
+    model: (name, schema) => {
       return mongoose.model(name, schema)
     }
   }

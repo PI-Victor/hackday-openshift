@@ -1,11 +1,13 @@
+'use strict'
+
 exports.show = function (res, req, next) {
   res.render('/patients', {
-    title: "Patients"
+    title: 'Patients'
   })
 }
 
-exports.add = function (res, req, next) {
-  res.render('/patients/add', {
+exports.create = function (res, req, next) {
+  res.render('/patients/new', {
     title: 'Add new entry'
   })
 }
