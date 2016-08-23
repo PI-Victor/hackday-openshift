@@ -2,6 +2,7 @@
 
 var dateFormat = require('dateformat')
 var mongoose = require('mongoose')
+var util = require('util')
 
 // TODO: insert all the openshift origin variables that are needed to connect
 // to a mongodb instance
@@ -39,6 +40,12 @@ module.exports = () => {
     },
 
     model: (name, schema) => {
+      // we load the user schema in the models, then we call it from the
+      // controllers. so only load it when it hasn't been loaded yet.
+      if (!schema) {
+        return mongoose.mode(name)
+      }
+      // don't think we need the extra else here
       return mongoose.model(name, schema)
     }
   }
