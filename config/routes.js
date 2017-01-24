@@ -9,8 +9,13 @@ module.exports = (app, db) => {
 
   app.get('/', home.show)
   app.get('/login', home.login)
+
   app.get('/patients', patients.create)
+
   app.get('/emergency', emergency.show)
+  app.get('/emergency/add', emergency.create)
+
   app.get('/onduty', onduty.show)
+
   app.get('/medication', medication.show)
 }
